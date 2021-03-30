@@ -1,7 +1,7 @@
 # MyFirstGainPlugin
 My first JUCE audio plugin. 
 
-![The Meanest Plugin](res\reaper_azDnEEYsyt.png)
+![The Meanest Plugin](https://raw.githubusercontent.com/GChau/MyFirstGainPlugin/main/res/reaper_azDnEEYsyt.png)
 
 # Build Environment
 * Visual Studio 2019
