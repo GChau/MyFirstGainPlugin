@@ -8,6 +8,11 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
+#include <algorithm>
+
+static const int WIDTH = 666;
+static const int HEIGHT = 666;
+
 
 //==============================================================================
 MyFirstGainPluginAudioProcessorEditor::MyFirstGainPluginAudioProcessorEditor (
@@ -17,7 +22,8 @@ MyFirstGainPluginAudioProcessorEditor::MyFirstGainPluginAudioProcessorEditor (
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    setSize (666, 666);
+    setSize (WIDTH, HEIGHT);
+    setResizable(true, true);
 
     // Set up slider
     slider_.setSliderStyle(juce::Slider::SliderStyle::Rotary);
@@ -55,7 +61,14 @@ void MyFirstGainPluginAudioProcessorEditor::paint (juce::Graphics& g)
     // Pseudo irn bru colours
     g.fillAll(juce::Colour(0xffffa600));
     g.setColour(juce::Colour(0xff001eff));
-    g.setFont (69.0f);
+
+    // Make font stretch or compress if window gets resized
+    const float x_ratio = ((float)getWidth() / WIDTH);
+    const float y_ratio = ((float)getHeight() / HEIGHT);
+    const float min_ratio = std::min(x_ratio, y_ratio);
+
+    const auto font_size = 69.0f * min_ratio;
+    g.setFont (font_size);
     g.drawFittedText("max 666 gainz!", getLocalBounds(), juce::Justification::centredTop, 1);
     g.drawFittedText("FREEDUM", getLocalBounds(), juce::Justification::centredBottom, 1);
 }
