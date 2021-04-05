@@ -13,7 +13,6 @@
 static const int WIDTH = 666;
 static const int HEIGHT = 666;
 
-
 //==============================================================================
 MyFirstGainPluginAudioProcessorEditor::MyFirstGainPluginAudioProcessorEditor (
     MyFirstGainPluginAudioProcessor& p
